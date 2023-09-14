@@ -38,7 +38,7 @@ body {
   width: 100%;
   cursor: pointer;
 }
-
+.color-picker-container,
 .color-picker {
   align-self: center;
   width: 80px;
@@ -71,6 +71,11 @@ body {
 .mode-btn:hover {
   color: rgb(230, 216, 216);
   background-color: rgb(92, 83, 83);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.mode-btn.active {
+  background-color: rgb(197, 171, 98);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -121,5 +126,6 @@ body {
 
 .pixel {
   border: 1px solid #414141;
+  background-color: whitesmoke;
   cursor: crosshair;
 }
