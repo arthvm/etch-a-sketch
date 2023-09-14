@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <script src="https://kit.fontawesome.com/a5cb30fd77.js" crossorigin="anonymous"></script>
     <title>Etch-a-Sketch</title>
 </head>
@@ -29,8 +29,8 @@
                 <button id="eraser-btn" class="mode-btn">Eraser Mode</button>
             </div>
             <div class="grid-selector">
-                <h3 class="grid-size-text">HvW</h3>
-                <input type="range" min="1" max="100" class="grid-slider" id="grid-slider">
+                <h3 class="grid-size-text"></h3>
+                <input type="range" min="1" max="100" class="grid-slider" id="grid-slider" value="16">
             </div>
         </div>
         <div class="grid" id="grid">

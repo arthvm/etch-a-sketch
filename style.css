@@ -112,8 +112,14 @@ body {
 
 .grid {
   display: flex;
+  flex-wrap: wrap;
   background-color: whitesmoke;
-  min-width: 500px;
-  min-height: 500px;
+  width: 500px;
+  height: 500px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.pixel {
+  border: 1px solid #414141;
+  cursor: crosshair;
 }
