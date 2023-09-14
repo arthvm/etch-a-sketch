@@ -3,6 +3,17 @@ window.onload = () => {
   UpdateGrid();
 };
 
+function RandomColor() {
+  let randomColor = "#";
+  const hexArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
+
+  for (let i = 0; i < 6; i++) {
+    randomColor += hexArray[Math.floor(Math.random() * 16)];
+  }
+
+  currentColor = randomColor;
+}
+
 /***********************************************************GENERIC VARIABLES***********************************************************/
 let isSliding = false;
 const sliderText = document.querySelector(".grid-size-text");
@@ -90,8 +101,18 @@ function AddColorListeners() {
     const pixel = pixels[i];
 
     pixel.addEventListener("click", () => {
-      pixel.style.cssText += `background-color: ${currentColor}`;
+      //pixel.style.cssText += `background-color: ${currentColor}`;
+      ChangeColor(pixel);
     });
+  }
+}
+
+function ChangeColor(pixel_to_color) {
+  if (activeRainbow) {
+    RandomColor();
+    pixel_to_color.style.cssText += `background-color: ${currentColor}`;
+  } else {
+    pixel_to_color.style.cssText += `background-color: ${currentColor}`;
   }
 }
 
@@ -130,8 +151,8 @@ function RainbowButton() {
   activeEraser = false;
   activeGrey = false;
 
-  if (activeRainbow) {
-  } else {
+  if (!activeRainbow) {
+    UpdateColor();
   }
 }
 
