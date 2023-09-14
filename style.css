@@ -1,0 +1,119 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #414141;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.header {
+  font-size: 1.3vw;
+  color: whitesmoke;
+}
+
+.content {
+  width: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 100px;
+}
+
+.settings {
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.mode-btn,
+.color-picker,
+.grid-slider {
+  width: 100%;
+  cursor: pointer;
+}
+
+.color-picker {
+  align-self: center;
+  width: 80px;
+  height: 80px;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+}
+
+.color-picker::-webkit-color-swatch {
+  border-radius: 50%;
+  border: 1px solid rgb(187, 187, 187);
+}
+
+.color-picker::-webkit-color-swatch:hover {
+  border: 1px solid rgb(158, 154, 154);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.mode-btn {
+  background-color: rgb(97, 88, 88);
+  color: whitesmoke;
+  border: 1px solid rgb(187, 187, 187);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 16px;
+}
+
+.mode-btn:hover {
+  color: rgb(230, 216, 216);
+  background-color: rgb(92, 83, 83);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.grid-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.grid-size-text {
+  color: whitesmoke;
+}
+
+.grid-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 5px;
+  height: 8px;
+  outline: none;
+  opacity: 0.7;
+  background: whitesmoke;
+  transition: 0.2s;
+}
+
+.grid-slider:hover {
+  opacity: 1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.grid-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border-radius: 50%;
+  appearance: none;
+  background: rgb(97, 88, 88);
+  width: 20px;
+  height: 20px;
+}
+
+.grid {
+  display: flex;
+  background-color: whitesmoke;
+  min-width: 500px;
+  min-height: 500px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
