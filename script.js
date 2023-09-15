@@ -3,6 +3,17 @@ window.onload = () => {
   UpdateGrid();
 };
 
+String.prototype.HexToRGB = function (...opacity) {
+  let hexCode = this;
+  let r = parseInt(hexCode.slice(1, 3), 16);
+  let g = parseInt(hexCode.slice(3, 5), 16);
+  let b = parseInt(hexCode.slice(5, 7), 16);
+
+  let rgbCode = `rgba(${r},${g},${b},${opacity})`;
+  currentRGBAColor = rgbCode;
+  return rgbCode;
+};
+
 function RandomColor() {
   let randomColor = "#";
   const hexArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
@@ -12,6 +23,17 @@ function RandomColor() {
   }
 
   currentColor = randomColor;
+}
+
+function OpacityColor(pixel) {
+  if (pixel.hasAttribute("data-gray_mode")) {
+    const temp = +pixel.dataset.gray_mode;
+    pixel.setAttribute("data-gray_mode", temp + 0.1);
+    currentColor = currentColor.HexToRGB(temp + 0.1);
+  } else {
+    pixel.setAttribute("data-gray_mode", 0.1);
+    currentColor = currentColor.HexToRGB(0.1);
+  }
 }
 
 /***********************************************************GENERIC VARIABLES***********************************************************/
@@ -37,6 +59,8 @@ let pixelHeight = gridHeight / sliderValue - PIXEL_BORDER * 2;
 const colorPicker = document.querySelector(".color-picker");
 let colorPickerValue = document.querySelector(".color-picker").value;
 let currentColor = colorPicker.value;
+
+let currentRGBAColor;
 
 //****************************BUTTONS SECTION****************************
 const settingsButtons = document.querySelectorAll(".mode-btn");
@@ -101,7 +125,6 @@ function AddColorListeners() {
     const pixel = pixels[i];
 
     pixel.addEventListener("click", () => {
-      //pixel.style.cssText += `background-color: ${currentColor}`;
       ChangeColor(pixel);
     });
   }
@@ -111,6 +134,10 @@ function ChangeColor(pixel_to_color) {
   if (activeRainbow) {
     RandomColor();
     pixel_to_color.style.cssText += `background-color: ${currentColor}`;
+  } else if (activeGrey) {
+    OpacityColor(pixel_to_color);
+    pixel_to_color.style.cssText += `background-color: ${currentColor}`;
+    UpdateColor();
   } else {
     pixel_to_color.style.cssText += `background-color: ${currentColor}`;
   }
@@ -157,13 +184,10 @@ function RainbowButton() {
 }
 
 function GreyButton() {
+  UpdateColor();
   activeGrey = !activeGrey;
   activeRainbow = false;
   activeEraser = false;
-
-  if (activeGrey) {
-  } else {
-  }
 }
 
 function EraserButton() {
